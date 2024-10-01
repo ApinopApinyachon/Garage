@@ -1,0 +1,229 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  width: 500px; /* เพิ่มขนาดความกว้างของ popup */
+}
+
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* สีพื้นหลังที่โปร่งใส */
+  z-index: 1000;
+}
+
+.popup button {
+  margin-top: 10px;
+}
+
+.main-content {
+  display: grid; /* เปลี่ยนจาก flex เป็น grid */
+  grid-template-columns: repeat(5, 1fr); /* กำหนดให้มี 5 คอลัมน์ */
+  gap: 20px; /* ระยะห่างระหว่าง card */
+  justify-items: center; /* จัดตำแหน่ง card ให้กลางคอลัมน์ */
+}
+
+
+.left-buttons, .right-buttons {
+  display: flex;
+  gap: 10px; /* ระยะห่างระหว่างปุ่ม */
+}
+
+button {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px; /* กำหนดความสูง */
+  min-width: 40px; /* กำหนดความกว้างขั้นต่ำให้ทุกปุ่มเท่ากัน */
+}
+
+button span.material-symbols-outlined {
+  font-size: 24px; /* ตั้งขนาดของไอคอน */
+}
+
+button:hover {
+  background-color: #ddd; /* สีพื้นหลังเมื่อ hover */
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2); /* เพิ่มเงาเมื่อปุ่มถูกโฟกัส */
+}
+
+
+
+.header {
+  display: flex; /* ใช้ Flexbox เพื่อจัดตำแหน่ง */
+  align-items: center; /* จัดให้อยู่ระดับเดียวกัน */
+  justify-content: center; /* จัดให้ทุกอย่างอยู่กลาง */
+  position: relative; /* สำหรับจัดตำแหน่งปุ่ม */
+  padding: 20px; /* เพิ่ม padding ตามต้องการ */
+}
+
+.right-button {
+  position: absolute; /* ใช้ position absolute เพื่อให้ปุ่มอยู่ที่มุมขวา */
+  right: 20px; /* เว้นระยะจากขอบขวา */
+}
+
+.header h1 {
+  text-align: center; /* จัดข้อความให้อยู่กลาง */
+  flex: 1; /* ทำให้ h1 ใช้พื้นที่ว่างที่เหลือ */
+}
+
+.add-car-button {
+  padding: 8px 12px; /* ตั้งค่าขนาดของปุ่ม */
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.add-car-button:hover {
+  background-color: #ddd; /* สีพื้นหลังเมื่อ hover */
+}
+
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 250px; /* กำหนดความกว้างคงที่ */
+  margin-bottom: 20px; /* ระยะห่างด้านล่างระหว่าง card */
+}
+.card-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; /* Make sure buttons take up full width */
+  align-items: center; /* Align the buttons in the center */
+  margin-top: 10px;
+}
+
+.left-buttons,
+.right-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.icon-button {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon-button:hover {
+  background-color: #e0e0e0;
+}
+
+
+.car-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* กำหนดสองคอลัมน์ */
+  gap: 20px; /* ช่องว่างระหว่างคอลัมน์และแถว */
+  max-width: 800px; /* เพิ่มความกว้างของฟอร์ม */
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc; /* เพิ่มกรอบรอบฟอร์ม */
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+
+.car-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+.car-input {
+  padding: 10px;
+  font-size: 14px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  width: 100%;
+}
+
+
+select, input[type="number"] {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+}
