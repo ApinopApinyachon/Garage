@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
+const cors = require('cors')
 const nano = require('nano')('http://admin:12345@localhost:5984'); 
 app.use(express.json());
 
 const db = nano.db.use('my-garage');
 
+app.use(cors())
 
 nano.db.create('my-garage', (err, body) => {
   if (!err) {
@@ -63,6 +65,6 @@ app.delete('/delete/:id', async (req, res) => {
     }
 });
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+app.listen(4000, () => {
+    console.log('Server is running on port 4000');
 });
