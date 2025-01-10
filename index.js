@@ -65,6 +65,16 @@ app.delete('/delete/:id', async (req, res) => {
     }
 });
 
+app.get('/car/:id', async (req, res) => {
+  try {
+    const document = await db.get(req.params.id);  
+    res.json(document); 
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
 app.listen(4000, () => {
     console.log('Server is running on port 4000');
 });
