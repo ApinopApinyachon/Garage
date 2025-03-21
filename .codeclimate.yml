@@ -1,0 +1,23 @@
+version: "2"
+checks:
+  complexity:
+    enabled: true
+  duplication:
+    enabled: true
+  style:
+    enabled: true
+
+engines:
+  eslint:
+    enabled: true
+  rubocop:
+    enabled: false
+  fixme:
+    enabled: true
+
+ratings:
+  paths:
+    - "**.ts"
+    - "**.tsx"
+    - "**.js"
+    - "**.jsx"
