@@ -22,6 +22,7 @@ jobs:
           ./cc-test-reporter before-build
 
       - name: Upload Coverage to CodeClimate
-        run: ./cc-test-reporter after-build --coverage-input-type lcov --exit-code $?
+        run: |
+          ./cc-test-reporter after-build --coverage-input-type lcov --exit-code $? || exit 1
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
