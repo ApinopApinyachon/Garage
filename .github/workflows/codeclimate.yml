@@ -1,0 +1,27 @@
+name: CodeClimate Analysis
+on: [push, pull_request]
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: |
+          npm install
+
+      - name: Run Tests and Generate Coverage
+        run: |
+          npm test -- --coverage --coverageReporters=lcov
+
+      - name: Install CodeClimate Test Reporter
+        run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+          ./cc-test-reporter before-build
+
+      - name: Upload Coverage to CodeClimate
+        run: ./cc-test-reporter after-build --coverage-input-type lcov --exit-code $?
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
