@@ -455,4 +455,71 @@ const Card = ({ imageSrc, content, details, onEdit, onDelete }) => {
   );
 };
 
+const Cards = ({ imageSrc, content, details, onEdit, onDelete }) => {
+  const [showDetailPopup, setShowDetailPopup] = useState(false);
+
+  const handleDetailPopup = () => {
+    setShowDetailPopup(!showDetailPopup);
+  };
+
+  return (
+    <div className="card">
+      <div className="card-image">
+        <img src={imageSrc} alt="Card visual" />
+      </div>
+      <div className="card-content">
+        <p>{content}</p>
+      </div>
+      <div className="card-buttons">
+        <div className="left-buttons">
+          <button onClick={handleDetailPopup}>Detail</button>
+        </div>
+
+        <div className="right-buttons">
+          <button className="icon-button" onClick={() => onEdit(details)}>
+            <span className="material-symbols-outlined">edit</span>
+          </button>
+          <button className="icon-button" onClick={() => onDelete(details._id)}>
+            <span className="material-symbols-outlined">delete</span>
+          </button>
+        </div>
+      </div>
+
+      {showDetailPopup && (
+        <div className="popup">
+          <div className="popup-content">
+            <h2>Car Details</h2>
+            <p>
+              <strong>Brand:</strong> {details.brand}
+            </p>
+            <p>
+              <strong>Model:</strong> {details.model}
+            </p>
+            <p>
+              <strong>Year:</strong> {details.year}
+            </p>
+            <p>
+              <strong>Color:</strong> {details.color}
+            </p>
+            <p>
+              <strong>Engine:</strong> {details.engine}
+            </p>
+            <p>
+              <strong>License Plate:</strong> {details.licensePlate}
+            </p>
+            <h3>Owner Information</h3>
+            <p>
+              <strong>Name:</strong> {details.owner.name}
+            </p>
+            <p>
+              <strong>Contact:</strong> {details.owner.contact}
+            </p>
+            <button onClick={handleDetailPopup}>Close</button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 export default App;
